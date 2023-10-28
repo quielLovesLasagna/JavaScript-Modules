@@ -94,11 +94,13 @@ In this example, we are importing a value called ```rand``` from the ```./math.j
 
 In this example, the ```index.js``` module imports the ```./dom.js``` and ```./math.js``` modules in a ```synchronous way```. What that means is that only after all imported modules have been downloaded and executed, the main index.js module will finally be executed as well. 
 
-This is only possible because of top level imports and exports. That's because if we only export and import values outside of any code that needs to be executed then the engine can know all the imports and exports during the parsing phase. So while the code is still being read/parsed before being executed. 
+This is only possible because of top level imports and exports. That's because if we only export and import values outside of any code that needs to be executed then the engine can know all the imports and exports during the parsing phase, so while the code is still being read/parsed before being executed. 
 
-If we were allowed to import a module inside of a function then that function would first have to be executed before the import code happened. In that case, modules could not be imported in a synchronous way. So the importing module would have to be executed first. 
+**IMPORTANT**: If we were allowed to import a module inside of a function then that function would first have to be executed before the import code happened. So in that case, modules could not be imported in a synchronous way. So the importing module would have to be executed first. If you could import a module inside a function, the function would need to run before the module is loaded. But this creates a problem. Why? Because you usually import a module to use its code, and if the function has to run before the module is imported, it would lead to an asynchronous way of importing, meaning the module's code would not be ready when you need it.
 
 But you might ask why do we actually want modules to be loaded in a synchronous way? Isn't synchronous bad? The answer is that this is the easiest way in which we can do things like bundling and dead code elimination so basically deleting code that's actually not even necessary. This is very important in large projects with hundreds of modules and that includes third party modules from which we usually only want a small piece and not the entire module. So, by knowing all dependencies between modules before execution, bundlers like Webpack and Parcel can then join multiple modules together and eliminate that code. 
+
+In most cases, you want to import modules in a synchronous way, which means the module's code is loaded and ready to use when your program starts. But if you import inside a function, it would become asynchronous, causing timing issues.
 
 Essentially, this is the reason why we can only import and export outside of any code that need to be executed like a function or an if block.
 
