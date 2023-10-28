@@ -106,6 +106,9 @@ Essentially, this is the reason why we can only import and export outside of any
 
 2) After the parsing process has figured out which module it needs to import, then these modules are actually downloaded from the server. Remember that ```downloading``` actually happens ```asynchronously```, it is only the ```importing``` operation itself that happens ```synchronously```. 
 
+When the main module is being parsed, the included modules are being downloaded.
+- They're being downloaded from the same server as your main JavaScript module. So, let's say you deployed your application to Netlify, in this case, they'll be downloaded from your server on Netlify.
+
 Then after a module arrives, it's also parsed and the modules exports are linked to the imports in ```index.js```. For example, the ```math.js``` module exports a function called ```rand``` and this export is then connected to the ```rand``` import in the index.js module. This connection is actually a live connection. So exported values are not copied to imports. Instead, the import is basically just a reference to the exported value so like a pointer. 
 
 When the value changes in the exporting module, then the same value also changes in the importing module. This is important to understand because it's unique to ES6 modules. Other module systems do not work like this, but JavaScript modules do. So you need to keep that in mind.
