@@ -58,3 +58,66 @@ In scripts, all top level variables are always global. This can lead to problems
 ![Import Export Syntax](./img/importExportSyntax.png)
  
 There is something really important to note about imports and exports, which is the fact that they can only happen at the top level. As you know, outside of any function or any block. All ```imports``` are ```hoisted```, so no matter where in a code you're importing values, it's like the import statement will be moved to the top of the file. In practice, importing values is always the first thing that happens in a module.
+
+5) In order to ```link a module to an HTML file```, we need to use the script tag with the type attribute set to module instead of just a plain script tag:
+
+```js
+<script type="module"></script>
+```
+
+6) About downloading the module files themselves, this always automatically happens in an asynchronous way. This is true for a module loaded from HTML as well as for modules that are loaded by importing one module into another using the ```import``` styntax. 
+
+Regular scripts on the other hand are downloaded by default in a blocking synchronous way unless we use the async or defer attributes on the script tag:
+
+```js
+<script defer src="script.js"></script>
+
+// OR
+
+<script async src="script.js"></script>
+```
+
+***
+
+<h2>How modules import other modules behind the scenes</h2>
+
+Let's use and analyze this simple code example:
+
+![Example](./img/importBehindTheScenes.png)
+
+In this example, we are importing a value called ```rand``` from the ```./math.js``` module and ```showDice``` from the ```./dom.js``` module. 
+
+1) Now, as always, when a piece of code is executed, the first step is to parse that code. Remember that parsing basically means to just read the code but without executing it.
+- This is the moment which imports are hoisted. In fact, the whole process of importing modules happens before the code in the main module is actually executed.
+
+![Parsing](./img/parcing.png)
+
+In this example, the ```index.js``` module imports the ```./dom.js``` and ```./math.js``` modules in a ```synchronous way```. What that means is that only after all imported modules have been downloaded and executed, the main index.js module will finally be executed as well. 
+
+This is only possible because of top level imports and exports. That's because if we only export and import values outside of any code that needs to be executed then the engine can know all the imports and exports during the parsing phase. So while the code is still being read/parsed before being executed. 
+
+If we were allowed to import a module inside of a function then that function would first have to be executed before the import code happened. In that case, modules could not be imported in a synchronous way. So the importing module would have to be executed first. 
+
+But you might ask why do we actually want modules to be loaded in a synchronous way? Isn't synchronous bad? The answer is that this is the easiest way in which we can do things like bundling and dead code elimination so basically deleting code that's actually not even necessary. This is very important in large projects with hundreds of modules and that includes third party modules from which we usually only want a small piece and not the entire module. So, by knowing all dependencies between modules before execution, bundlers like Webpack and Parcel can then join multiple modules together and eliminate that code. 
+
+Essentially, this is the reason why we can only import and export outside of any code that need to be executed like a function or an if block.
+
+2) After the parsing process, has figured out which module it needs to import, then these modules are actually downloaded from the server. Remember that ```downloading``` actually happens ```asynchronously```, it is only the ```importing``` operation itself that happens ```synchronously```. 
+
+Then after a module arrives, it's also parsed and the modules exports are linked to the imports in ```index.js```. For example, the ```math.js``` module exports a function called ```rand``` and this export is then connected to the ```rand``` import in the index.js module. This connection is actually a live connection. So exported values are not copied to imports. Instead, the import is basically just a reference to the exported value so like a pointer. 
+
+When the value changes in the exporting module, then the same value also changes in the importing module. This is important to understand because it's unique to ES6 modules. Other module systems do not work like this, but JavaScript modules do. So you need to keep that in mind.
+
+3) The code in the imported modules is executed. And with this, the process of importing modules is finally finished. So now, it's time for the importing module to be finally executed as well -> ```index.js``` in this example.
+
+![Downloading Modules and Final Execution](./img/dLandExecution.png)
+
+
+
+
+
+
+
+
+
+
