@@ -20,3 +20,7 @@ Top-level await is a modern JavaScript feature that simplifies asynchronous prog
 
 2) **Compatibility**: Ensure that your runtime environment and tools support top-level await before using it, as not all do.
 
+#
+
+Again, one more important implication of using top-level await -> The fact that if one module imports a module which has a top-level await, then the importing module will wait for the imported module to finish the blocking code.
+
