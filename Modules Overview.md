@@ -62,7 +62,7 @@ There is something really important to note about imports and exports, which is 
 5) In order to ```link a module to an HTML file```, we need to use the script tag with the type attribute set to module instead of just a plain script tag:
 
 ```js
-<script type="module"></script>
+<script type="module" src="script.js"></script>
 ```
 
 6) About downloading the module files themselves, this always automatically happens in an asynchronous way. This is true for a module loaded from HTML as well as for modules that are loaded by importing one module into another using the ```import``` styntax. 
