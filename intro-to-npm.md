@@ -47,7 +47,7 @@ This file here basically what stores the entire configuration of our project. As
 
   ![dependency](./img/dependency.png)
 
-  - Second, we now have this folder called ```node_modules```, this folder itself containes the leaflet folder, this leaflet folder contains everything about the leaflet library that we need to include in our page. This folder simply contains everything about this package. Of course, the more packages we install, they will all get stored in the node_modules folder. 
+  - Second, we now have this folder called ```node_modules```, this folder itself contains the leaflet folder, this leaflet folder contains everything about the leaflet library that we need to include in our page. This folder simply contains everything about this package. Of course, the more packages we install, they will all get stored in the node_modules folder. 
 
   ![node modules](./img/node-modules.png)
 
