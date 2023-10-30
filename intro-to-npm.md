@@ -65,7 +65,7 @@ Now , we will install and import one of the most popular JavaScript libraries wh
 
 The same thing will happen after installing it: the package will be added to the dependencies and the node_modules will now contain the lodash-es folder which contains everything about lodash-es.
 
-![lodash dependency](./img/)
+![lodash dependency](./img/lodash-dependency.png)
  
 
 
