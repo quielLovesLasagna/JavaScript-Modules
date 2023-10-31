@@ -1,6 +1,7 @@
 <h1>Transpiling and Polyfilling</h1>
 
 <h2>Transpiling:</h2>
+
 Transpiling is like ```translating code``` from one language to another. In the context of JavaScript, it's usually used to convert code written in a newer version of JavaScript (ES6/ES7/ES8) into an older version (usually ES5) that can run in older web browsers. This is done to ensure that your code works in as many browsers as possible, even if they don't support the latest JavaScript features. A popular tool for transpiling JavaScript is Babel.
 
 For example, if you write modern ES6 JavaScript code like this:
