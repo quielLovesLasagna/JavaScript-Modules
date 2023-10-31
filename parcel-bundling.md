@@ -52,7 +52,7 @@ The code above is code that only Parcel understands and so of course it will not
 
 ![import clone deep](./img/importCloneDeep.png)
 
-When we first included cloneDeep from lodash, this is quite cumbersome doing it like this. And so that't why in all module bundlers, there's no need for specifying the entire path to any module. So instead, we can simply do this:
+When we first included cloneDeep from lodash, this is quite cumbersome doing it like this. And so that's why in all module bundlers, there's no need for specifying the entire path to any module. So instead, we can simply do this:
 
 - All we need to say is that we want to include the lodash library. Parcel will the automatically finds the path to this module and will simply import it like the code below, without us having to manually type the entire path to there. 
 
@@ -90,13 +90,13 @@ It's doing the same thing as before but now we have the simple command that we c
 
 ***
 
-Whenever we are done developing our project, it is time to build the final bundle. So the bundle that is compressed and has dead code elimination and all of that. For that, we another Parcel command. Let's add that as another script:
+Whenever we are done developing our project, it is time to build the final bundle. So the bundle that is compressed and has dead code elimination and all of that. For that, we write another Parcel command. Let's add that as another script:
 
 ![npm build](./img/npm-build.PNG)
 
 We can run this by doing ```npm run build```. 
 
-NOTE: If you encounter an error when you run his command, just delete the ```"main": "script.js"``` from your package.json. This has something to do with parcel config. Our entry point is the ```index.html file```, but the main property from the package.json file tells parcel it should be ```clean.js``` file.
+NOTE: If you encounter an error when you run his command, just delete the ```"main": "clean.js"``` from your package.json. This has something to do with parcel config. Our entry point is the ```index.html file```, but the main property from the package.json file tells parcel it should be ```clean.js``` file.
 
 After running the build command we will get this output:
 
