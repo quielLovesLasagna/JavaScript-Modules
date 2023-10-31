@@ -43,6 +43,7 @@ However, in Parcel, we can activate something even better which is called ```hot
 ```js
 if(module.hot) {
  module.hot.accept();
+}
 ```
 
 The code above is code that only Parcel understands and so of course it will not make it into our final bundle because the browser is not going to understand any of it. But anyway, what ```hot module reloading``` means is that whenever we change one of the modules, it will then of course trigger a rebuild but that new modified bundle will then automatically like magic, get injected into the browser without triggering a whole page reload. Again, if we change something in one of our modules, this will then not reload the page and only updates the part of the page that has changed. This will be helpful for maintaning state on our page whenever we are testing out something.
