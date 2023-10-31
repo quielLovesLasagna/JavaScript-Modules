@@ -97,6 +97,26 @@ We can run this by doing ```npm run build```.
 
 NOTE: If you encounter an error when you run his command, just delete the ```"main": "script.js"``` from your package.json. This has something to do with parcel config. Our entry point is the ```index.html file```, but the main property from the package.json file tells parcel it should be ```clean.js``` file.
 
+After running the build command we will get this output:
+
+![build output](./img/output.PNG)
+
+If you check the files in the ```dist``` folder, you will see that the ```index.html``` will look different, it will now be compressed including the script. Also, the script that we can then ship to the browser and ship to our users is the one that is written inside index.html in the dist folder:
+
+ ![script after build](./img/script-build.PNG)
+
+![dist folder build](./img/dist-build.PNG)
+
+***
+
+To finish, we can also install packages globally. That would work like this: 
+
+```npm i parcel -g```
+
+```g``` stands for **global**. This is actually the way we install the live-server package. Because of that, we can then simply be able to use live-server in every directory on our computer. So basically, the big difference between ```globally``` and ```locally``` installed packages and especially these tools like ```Parcel``` or ```live-server```, is that we can use global tools directly in the command line without the intermediate step of an ```NPM script```. However, most of these tools actually advide developers to always install the tools locally so that they can always stay on the lastest version. So we should not install Parcel globally like the example above.
+
+That's the fundamentals of bundling with Parcel and of using build tools with NPM. 
+
 
 
 
