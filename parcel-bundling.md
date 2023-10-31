@@ -52,7 +52,7 @@ The code above is code that only Parcel understands and so of course it will not
 
 ![import clone deep](./img/importCloneDeep.png)
 
-When we first included cloneDeep from lodash, this is quite cumbersome doint it like this. And so that't why in all module bundlers, there's no need for specifying the entire path to any module. So instead, we can simply do this:
+When we first included cloneDeep from lodash, this is quite cumbersome doing it like this. And so that't why in all module bundlers, there's no need for specifying the entire path to any module. So instead, we can simply do this:
 
 - All we need to say is that we want to include the lodash library. Parcel will the automatically finds the path to this module and will simply import it like the code below, without us having to manually type the entire path to there. 
 
