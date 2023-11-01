@@ -61,9 +61,9 @@ You can find more information about it in Parcel's docs: [https://parceljs.org/g
 
 To make transpiling and polyfilling work, follow these steps:
 
-1) Install __core-js__ using the ```npm i core-js``` command in your Terminal to provide polyfills for your code.
+1) Install __core-js__ using the ```npm i core-js``` command in your Terminal to provide polyfills for your code and also install __regenerator-runtime__ using ```npm i regenerator-runtime```.
 
-2) Import __core-js__ in your project. Put this line ```import "core-js/actual";``` somewhere at the top in your JavaScript file.
+2) Import __core-js__ and  __regenerator-runtime__ in your project. Put this line ```import "core-js/actual";``` and ```import "regenerator-runtime/runtime";``` somewhere at the top in your JavaScript file.
 
 3) Add this line to the __package.json__ file in your project
 
