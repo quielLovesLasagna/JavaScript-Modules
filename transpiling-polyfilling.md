@@ -81,6 +81,19 @@ You can change it according to the needs of your project. For example, I include
 
 Include some newer syntax in your code, in this case, I'll use the class syntax because I want to include IE11, which doesn't support it. Then, build your project with npm run build, and open your JavaScript file from the dist directory. Search for the word "class", and see if it exists in the transpiled code. Note that it may still exist in the transpiled code as a string, and not as the class statement. You can also do this with Arrow Functions, after transpiling it, it will be converted to a regular function.
 
+OR
+
+To check if it works:
+
+1) Open the ```dist/index.html file```, and see which .js file is linked with the "nomodule" <script> tag
+
+```<script src='/index.1381f349.js' nomodule='' defer></script>```
+Then, open that index.<hash>.js file, and search for instances of "class". You can search with Ctrl + F shortcut. The word "class" may occur in this file as a string, but it shouldn't occur as part of JavaScript syntax.
+
+![no module script](./img/nomodule.PNG)
+
+![after transpiling](./img/regFunc2.PNG)
+
 <h2>Transpiling vs. Polifilling</h2>
 
 When we talk about transpiling in JavaScript, we usually mean a process of translating ES6+ code to the older standard supported by old browsers. For example, the class syntax that works in modern browsers doesn't work in Internet Explorer. Transpiling would translate the class syntax into a regular function that works in IE. You can try this yourself in [Babel's playground](https://babeljs.io/repl#?browsers=defaults%2C%20ie%20%3E%3D%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=OQVwzgpgBGAuBOBLAxrYBuAUJ5AbAhmGFACoRxQDemUyA9gHZzwip3wAUAlFQL5SZeQA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.22.10&externalPlugins=&assumptions=%7B%7D). Although, the code produced by Babel isn't very readable for humans, you can probably see that the `class` syntax was replaced by a bunch of functions.
