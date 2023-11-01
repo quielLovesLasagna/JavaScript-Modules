@@ -11,6 +11,8 @@ This repository contains my notes about:
 - Introduction to the Command Line
 - Introduction to NPM
 - Bundling with Parcel and NPM scripts
+- Transpiling and Polyfilling
+- Transpiling and Polyfilling with Parcel Bundler
 
 ***
 
