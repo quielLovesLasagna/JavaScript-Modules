@@ -26,7 +26,7 @@ If you get any number after doing that command, any number, then you're good. Bu
 
 ![NPM initialize](./img/npm-init.png)
 
-After doing initializing it, you will get a file called ```package.json```
+After initializing it, you will get a file called ```package.json```
 
 ![package.json](./img/package-json.png)
 
